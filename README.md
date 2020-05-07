@@ -7,4 +7,4 @@ According to the business requirements, I developed the source code of soapUI tw
 The source code of soapui has five modules,but we only need to give attention to [soapui](soapui)-The core module that creates the soapui.jar file.
 * First of all, I added one package under main/Java, [com.founder.soapui](soapui/src/main/java/com/founder/soapui), encapsulate the methods in the source code to parse the WSDL.
 * Secondly, a folder, [com.founder.soapui](soapui/src/main/resources/com.founder.soapui), is added under resource to store configuration files and mybatis mapping files.
-Thirdly, added one package under test/Java, [com.founder.soapui](soapui/src/test/java/com/founder/soapui), to test of parsing wsdl.
+* Thirdly, added one package under test/Java, [com.founder.soapui](soapui/src/test/java/com/founder/soapui), to test of parsing wsdl.
