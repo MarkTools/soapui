@@ -8,3 +8,4 @@ The source code of soapui has five modules, but we only need to give attention t
 * First of all, I added one package under main/Java, [com.founder.soapui](soapui/src/main/java/com/founder/soapui), encapsulate the methods in the source code to parse the wsdl.
 * Secondly, a folder, [com.founder.soapui](soapui/src/main/resources/com.founder.soapui), is added under [resources](soapui/src/main/resources) to store configuration files and mybatis mapping files.
 * Thirdly, added one package under test/Java, [com.founder.soapui](soapui/src/test/java/com/founder/soapui), to test of parsing wsdl.
+* Finally, ...
