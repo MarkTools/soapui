@@ -2,7 +2,7 @@ According to the business requirements, I developed the source code of soapUI tw
 ## Build and run
 * Please follow the source code of [soapui](https://github.com/SmartBear/soapui) to build and run.
 * I used [IntelliJ IDEA](https://www.jetbrains.com/idea/) to open project. You can skip the test to install or run when you compile and report some errors.
-* On the basis of the source code, it integrates mybatis to read and write operation of the database, so it is necessary to introduce the related dependency of mybatis and mysql.
+* On the basis of the source code, it integrates mybatis to read and write operation of the database, so it is necessary to introduce the related dependency of mybatis and mysql, and update mybatis-config.xml, database.properties of yourself.
 ## Update and add
 The source code of soapui has five modules, but we only need to give attention to [soapui](soapui)-The core module that creates the soapui.jar file.
 * First of all, I added one package under main/Java, [com.founder.soapui](soapui/src/main/java/com/founder/soapui), encapsulate the methods in the source code to parse the wsdl.
