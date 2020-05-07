@@ -1,0 +1,17 @@
+# Project files
+*.iml
+*.idea
+.settings/
+.classpath
+.project
+*-ide-plugin.xml
+
+# Logs
+*.log
+
+# Build folders
+target/
+
+# plugin / extension folders
+soapui/ext
+soapui/plugins

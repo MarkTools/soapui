@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.founder.soapui.mapper.WsdlUrlMapper">
+    <resultMap id="WsdlUrlMap" type="WsdlUrl">
+        <result property="url" column="url"></result>
+        <result property="serviceId" column="service_id"></result>
+    </resultMap>
+
+    <select id="queryCount" resultType="Integer">
+        SELECT COUNT(1) FROM wsdl_url
+    </select>
+
+    <select id="queryAllUrl" resultMap="WsdlUrlMap">
+        select
+            service_id as serviceId,url as url
+        from wsdl_url
+    </select>
+
+</mapper>

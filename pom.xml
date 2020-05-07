@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.smartbear.soapui</groupId>
+    <artifactId>soapui-project</artifactId>
+    <name>SoapUI project</name>
+    <version>5.6.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <repositories>
+        <repository>
+            <id>smartbear-soapui-repository</id>
+            <url>https://www.soapui.org/repository/maven2</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>smartbear-plugin-repository</id>
+            <url>https://www.soapui.org/repository/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <requireMavenVersion-value>3.0.5</requireMavenVersion-value>
+        <maxJdkVersion-value>12</maxJdkVersion-value>
+
+        <!-- Custom properties -->
+        <assembly.build.directory>${project.build.directory}/assemblies</assembly.build.directory>
+        <installer.build.directory>${project.build.directory}/install4j</installer.build.directory>
+        <build.date>${maven.build.timestamp}</build.date>
+
+        <project.name.full>SoapUI-${project.version}</project.name.full>
+        <project.name.visible>SoapUI</project.name.visible>
+        <project.src.artifactId>soapui</project.src.artifactId>
+
+        <analytics.version>5.5.1</analytics.version>
+
+        <!-- org.apache.maven.plugins -->
+        <maven-enforcer-plugin-version>3.0.0-M2</maven-enforcer-plugin-version>
+        <maven-clean-plugin-version>3.1.0</maven-clean-plugin-version>
+        <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
+        <maven-javadoc-plugin-version>3.1.0</maven-javadoc-plugin-version>
+        <maven-deploy-plugin-version>3.0.0-M1</maven-deploy-plugin-version>
+        <maven-install-plugin-version>3.0.0-M1</maven-install-plugin-version>
+        <maven-site-plugin-version>3.7.1</maven-site-plugin-version>
+        <maven-jar-plugin-version>3.1.2</maven-jar-plugin-version>
+        <maven-surefire-plugin-version>3.0.0-M3</maven-surefire-plugin-version>
+        <maven-plugin-plugin-version>3.6.0</maven-plugin-plugin-version>
+        <maven-failsafe-plugin-version>3.0.0-M3</maven-failsafe-plugin-version>
+        <maven-assembly-plugin-version>3.1.1</maven-assembly-plugin-version>
+        <!-- org.apache.xmlbeans -->
+        <xmlbeans-version>3.1.1-sb-fixed</xmlbeans-version>
+        <xmlbeans-xpath-version>2.6.0</xmlbeans-xpath-version>
+        <xmlbeans-xmlpublic-version>2.6.0</xmlbeans-xmlpublic-version>
+        <!-- org.codehaus.mojo -->
+        <versions-maven-plugin-version>2.7</versions-maven-plugin-version>
+        <exec-maven-plugin-version>1.6.0</exec-maven-plugin-version>
+        <xmlbeans-maven-plugin-version>2.3.5-sb-fixed</xmlbeans-maven-plugin-version>
+        <!-- org.openjfx-->
+        <javafx-base-version>12</javafx-base-version>
+        <javafx-controls-version>12</javafx-controls-version>
+        <javafx-graphics-version>12</javafx-graphics-version>
+        <javafx-media-version>12</javafx-media-version>
+        <javafx-web-version>12</javafx-web-version>
+        <javafx-swing-version>12</javafx-swing-version>
+        <!-- other -->
+        <maven-gitlog-plugin-version>1.9.1</maven-gitlog-plugin-version>
+
+    </properties>
+
+    <modules>
+        <module>soapui</module>
+        <module>soapui-maven-plugin</module>
+        <module>soapui-installer</module>
+        <module>soapui-maven-plugin-tester</module>
+        <module>soapui-system-test</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven-plugin-version}</version>
+                <configuration>
+                    <generateBackupPoms>false</generateBackupPoms>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${maven-clean-plugin-version}</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${project.basedir}</directory>
+                            <includes>
+                                <include>*.log</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin-version}</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.9</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin-version}</version>
+                <configuration>
+                    <maxmemory>1024m</maxmemory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven-enforcer-plugin-version}</version>
+                <executions>
+                    <execution>
+                        <id>enforce-versions</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>${requireMavenVersion-value}</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>enforce-bytecode-version</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <enforceBytecodeVersion>
+                                    <maxJdkVersion>${maxJdkVersion-value}</maxJdkVersion>
+                                </enforceBytecodeVersion>
+                            </rules>
+                            <fail>true</fail>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>extra-enforcer-rules</artifactId>
+                        <version>1.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven-deploy-plugin-version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>${maven-install-plugin-version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${maven-site-plugin-version}</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

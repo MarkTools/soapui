@@ -1,0 +1,96 @@
+/*
+ * SoapUI, Copyright (C) 2004-2019 SmartBear Software
+ *
+ * Licensed under the EUPL, Version 1.1 or - as soon as they will be approved by the European Commission - subsequent 
+ * versions of the EUPL (the "Licence"); 
+ * You may not use this work except in compliance with the Licence. 
+ * You may obtain a copy of the Licence at: 
+ * 
+ * http://ec.europa.eu/idabc/eupl 
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the Licence is 
+ * distributed on an "AS IS" basis, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either 
+ * express or implied. See the Licence for the specific language governing permissions and limitations 
+ * under the Licence. 
+ */
+
+package com.eviware.soapui.ui.desktop;
+
+import com.eviware.soapui.model.ModelItem;
+import com.eviware.soapui.support.action.swing.ActionList;
+
+import javax.swing.JComponent;
+
+/**
+ * null-desktop used when running from command-line, etc
+ *
+ * @author Ole
+ */
+
+public class NullDesktop implements SoapUIDesktop {
+    public void addDesktopListener(DesktopListener listener) {
+    }
+
+    public boolean closeAll() {
+        return false;
+    }
+
+    public boolean closeDesktopPanel(DesktopPanel desktopPanel) {
+        return false;
+    }
+
+    public boolean closeDesktopPanel(ModelItem modelItem) {
+        return false;
+    }
+
+    public ActionList getActions() {
+        return null;
+    }
+
+    public JComponent getDesktopComponent() {
+        return null;
+    }
+
+    public DesktopPanel getDesktopPanel(ModelItem modelItem) {
+        return null;
+    }
+
+    public DesktopPanel[] getDesktopPanels() {
+        return null;
+    }
+
+    public boolean hasDesktopPanel(ModelItem modelItem) {
+        return false;
+    }
+
+    public void init() {
+    }
+
+    public void maximize(DesktopPanel dp) {
+    }
+
+    @Override
+    public void showInspector(JComponent component) {
+
+    }
+
+    public void minimize(DesktopPanel desktopPanel) {
+    }
+
+    public void release() {
+    }
+
+    public void removeDesktopListener(DesktopListener listener) {
+    }
+
+    public DesktopPanel showDesktopPanel(ModelItem modelItem) {
+        return null;
+    }
+
+    public DesktopPanel showDesktopPanel(DesktopPanel desktopPanel) {
+        return null;
+    }
+
+    public void transferTo(SoapUIDesktop newDesktop) {
+    }
+}

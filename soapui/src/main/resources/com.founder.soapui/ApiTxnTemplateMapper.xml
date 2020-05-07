@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--Path to mapper file-->
+<mapper namespace="com.founder.soapui.mapper.ApiTxnTemplateMapper">
+    <resultMap id="ApiTxnTemplateMap" type="ApiTxnTemplate">
+        <result property="channelId" column="channel_id"></result>
+        <result property="serviceId" column="service_id"></result>
+        <result property="tranType" column="tran_type"></result>
+        <result property="binding" column="binding"></result>
+        <result property="requestUrl" column="request_url"></result>
+        <result property="requestTemplate" column="request_template"></result>
+    </resultMap>
+
+    <select id="queryCount" resultType="Integer">
+        SELECT COUNT(1) FROM api_txn_template
+    </select>
+
+    <insert id="insertApiTxnTemplate" parameterType="java.util.List">
+        insert into api_txn_template
+        (
+            channel_id,
+            service_id,
+            tran_type,
+            binding,
+            request_url,
+            request_template
+        )
+        values
+        <foreach collection="list" item="apiTxnTemplate" index= "index" separator =",">
+            (
+            #{apiTxnTemplate.channelId},
+            #{apiTxnTemplate.serviceId},
+            #{apiTxnTemplate.tranType},
+            #{apiTxnTemplate.binding},
+            #{apiTxnTemplate.requestUrl},
+            #{apiTxnTemplate.requestTemplate}
+            )
+        </foreach>
+    </insert>
+</mapper>
