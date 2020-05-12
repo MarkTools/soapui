@@ -12,7 +12,8 @@ public class ApiTxnTemplate {
     private String tranType;
     private String binding;
     private String requestUrl;
-    private String requestTemplate;
+    private String requestTemplate1;
+    private String requestTemplate2;
 
     public String getBinding() {
         return binding;
@@ -46,12 +47,20 @@ public class ApiTxnTemplate {
         this.tranType = tranType;
     }
 
-    public String getRequestTemplate() {
-        return requestTemplate;
+    public String getRequestTemplate1() {
+        return requestTemplate1;
     }
 
-    public void setRequestTemplate(String requestTemplate) {
-        this.requestTemplate = requestTemplate;
+    public void setRequestTemplate1(String requestTemplate1) {
+        this.requestTemplate1 = requestTemplate1;
+    }
+
+    public String getRequestTemplate2() {
+        return requestTemplate2;
+    }
+
+    public void setRequestTemplate2(String requestTemplate2) {
+        this.requestTemplate2 = requestTemplate2;
     }
 
     public String getRequestUrl() {

@@ -19,5 +19,5 @@ public interface ApiTxnTemplateMapper {
      * Bulk insert data into database table api_txn_template
      * @param apiTxnTemplateList
      */
-    public void insertApiTxnTemplate(List<ApiTxnTemplate> apiTxnTemplateList);
+    public void batchInsertApiTxnTemplate(List<ApiTxnTemplate> apiTxnTemplateList);
 }

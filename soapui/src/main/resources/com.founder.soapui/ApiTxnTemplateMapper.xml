@@ -8,14 +8,15 @@
         <result property="tranType" column="tran_type"></result>
         <result property="binding" column="binding"></result>
         <result property="requestUrl" column="request_url"></result>
-        <result property="requestTemplate" column="request_template"></result>
+        <result property="requestTemplate1" column="request_template_1"></result>
+        <result property="requestTemplate2" column="request_template_2"></result>
     </resultMap>
 
     <select id="queryCount" resultType="Integer">
         SELECT COUNT(1) FROM api_txn_template
     </select>
 
-    <insert id="insertApiTxnTemplate" parameterType="java.util.List">
+    <insert id="batchInsertApiTxnTemplate" parameterType="java.util.List">
         insert into api_txn_template
         (
             channel_id,
@@ -23,8 +24,10 @@
             tran_type,
             binding,
             request_url,
-            request_template
+            request_template_1,
+            request_template_2
         )
+        <!--mybatis -> mysql
         values
         <foreach collection="list" item="apiTxnTemplate" index= "index" separator =",">
             (
@@ -33,7 +36,23 @@
             #{apiTxnTemplate.tranType},
             #{apiTxnTemplate.binding},
             #{apiTxnTemplate.requestUrl},
-            #{apiTxnTemplate.requestTemplate}
+            #{apiTxnTemplate.requestTemplate1},
+            #{apiTxnTemplate.requestTemplate2}
+            )
+        </foreach>-->
+
+        /*mybatis -> oracle*/
+        <foreach collection="list" item="apiTxnTemplate" index= "index" separator ="union all">
+            (
+                select
+                    #{apiTxnTemplate.channelId},
+                    #{apiTxnTemplate.serviceId},
+                    #{apiTxnTemplate.tranType},
+                    #{apiTxnTemplate.binding},
+                    #{apiTxnTemplate.requestUrl},
+                    #{apiTxnTemplate.requestTemplate1},
+                    #{apiTxnTemplate.requestTemplate2}
+                from dual
             )
         </foreach>
     </insert>
